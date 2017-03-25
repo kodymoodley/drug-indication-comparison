@@ -1,12 +1,12 @@
 <html>
 <head>
-    <title>DrugCentral: indication codes lookup</title>
+    <title>DrugCentral vs DailyMed: indication codes comparison</title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <!-- start header div --> 
     <div id="header">
-        <h3>DrugCentral: indication codes lookup</h3>
+        <h3>DrugCentral vs DailyMed: indication codes comparison</h3>
     </div>
     <!-- end header div -->   
      
@@ -19,8 +19,8 @@
             include("conn_dev.php");
             header("Access-Control-Allow-Origin: *");
 
-            $query_result = mysqli_query($conn, "SELECT code FROM atc WHERE chemical_substance ='cisplatin'") or die(mysqli_error());
-            $object = mysqli_fetch_object($query_result);
+            $query_result = pg_query($conn, "SELECT code FROM atc WHERE chemical_substance ='cisplatin'") or die(pg_error());
+            $object = pg_fetch_object($query_result);
             $message = $object->code;
             echo $message;
             //header("Content-Type: application/json; charset=UTF-8");
