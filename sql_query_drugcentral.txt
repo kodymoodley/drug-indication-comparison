@@ -15,4 +15,4 @@ SELECT omop_relationship.id,
           WHERE ((doid_xref.source)::text ~~ 'SNOMED%'::text)
           GROUP BY doid_xref.xref) d ON ((omop_relationship.snomed_conceptid = (d.xref)::bigint)))
 			 
-	WHERE omop_relationship.struct_id = 4392;
+	WHERE omop_relationship.struct_id = 1752;
