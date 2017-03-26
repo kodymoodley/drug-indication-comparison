@@ -1,0 +1,366 @@
+[
+	{
+		"updated":"2017-03-24T09:01:39.182297+00:00",
+		"group":"__world__",
+		"target":
+		[
+			{
+				"source":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+				"selector":
+					[
+						{
+							"conformsTo":"https:\/\/tools.ietf.org\/html\/rfc3236",
+							"type":"FragmentSelector",
+							"value":"drug-information"
+						},
+
+						{
+							"endContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[3]\/p[2]\/span[1]\/span[1]",
+							"startContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[3]\/p[2]\/span[1]\/span[1]",
+							"type":"RangeSelector",
+							"startOffset":9,
+							"endOffset":23
+						},
+
+						{
+							"type":"TextPositionSelector",
+							"end":30565,"start":30551
+						},
+
+						{
+							"exact":"Bladder Cancer",
+							"prefix":" \n \n \n \n Advanced ",
+							"type":"TextQuoteSelector",
+							"suffix":" \n Cisplatin Injection is in"
+						}
+					]
+			}
+		],
+
+		"links":
+			{
+				"json":"https:\/\/hypothes.is\/api\/annotations\/fd2dSBBwEee67kv5ipjvHA",
+				"html":"https:\/\/hypothes.is\/a\/fd2dSBBwEee67kv5ipjvHA",
+				"incontext":"https:\/\/hyp.is\/fd2dSBBwEee67kv5ipjvHA\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68"
+			},
+
+		"tags":
+			[
+				"UMLS_CUI:C0005695",
+				"DOID_11054",
+				"indication",
+				"DM"
+			],
+
+			"text":"",
+			"created":"2017-03-24T09:01:39.182297+00:00",
+			"uri":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+			"user":"acct:lrieswijk@hypothes.is",
+			"document":
+				{
+					"title":
+						[
+							"DailyMed - CISPLATIN- cisplatin injection"
+						]
+				},
+
+				"id":"fd2dSBBwEee67kv5ipjvHA",
+				"permissions":
+					{
+						"read":
+							[
+								"group:__world__"
+							],
+
+						"admin":
+							[
+								"acct:lrieswijk@hypothes.is"
+							],
+
+						"update":
+							[
+								"acct:lrieswijk@hypothes.is"
+							],
+
+						"delete":
+							[
+								"acct:lrieswijk@hypothes.is"
+							]
+					}
+	},
+
+	{
+		"updated":"2017-03-24T08:59:16.733390+00:00",
+		"group":"__world__",
+		"target":
+			[
+				{
+					"source":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+					"selector":
+						[
+							{
+								"conformsTo":"https:\/\/tools.ietf.org\/html\/rfc3236",
+								"type":"FragmentSelector",
+								"value":"drug-information"
+							},
+
+							{
+								"endContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[3]\/p[3]",
+								"startContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[3]\/p[3]",
+								"type":"RangeSelector",
+								"startOffset":70,
+								"endOffset":102
+							},
+
+							{
+								"type":"TextPositionSelector",
+								"end":30673,
+								"start":30641
+							},
+
+							{
+								"exact":"transitional cell bladder cancer",
+								"prefix":" single agent for patients with ",
+								"type":"TextQuoteSelector",
+								"suffix":" which is no longer amenable to "
+							}
+						]
+				}
+			],
+
+		"links":
+			{
+				"json":"https:\/\/hypothes.is\/api\/annotations\/KPRemBBwEeeK2yfwOtssdw",
+				"html":"https:\/\/hypothes.is\/a\/KPRemBBwEeeK2yfwOtssdw",
+				"incontext":"https:\/\/hyp.is\/KPRemBBwEeeK2yfwOtssdw\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68"
+			},
+
+		"tags":
+			[
+				"UMLS_CUI:C0279680",
+				"indication",
+				"DM"
+			],
+
+		"text":"",
+		"created":"2017-03-24T08:59:16.733390+00:00",
+		"uri":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+		"user":"acct:lrieswijk@hypothes.is",
+		"document":
+			{
+				"title":
+					[
+						"DailyMed - CISPLATIN- cisplatin injection"
+					]
+			},
+
+		"id":"KPRemBBwEeeK2yfwOtssdw",
+		"permissions":
+			{
+				"read":
+					[
+						"group:__world__"
+					],
+
+				"admin":
+					[
+						"acct:lrieswijk@hypothes.is"
+					],
+
+				"update":
+					[
+						"acct:lrieswijk@hypothes.is"
+					],
+
+				"delete":
+					[
+						"acct:lrieswijk@hypothes.is"
+					]
+			}
+
+	},
+
+	{
+		"updated":"2017-03-23T11:09:30.966531+00:00",
+		"group":"__world__",
+		"target":
+			[
+				{
+					"source":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+					"selector":
+						[
+							{
+								"conformsTo":"https:\/\/tools.ietf.org\/html\/rfc3236",
+								"type":"FragmentSelector",
+								"value":"drug-information"
+							},
+
+							{
+								"endContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[2]\/p[2]\/span[1]\/span[1]",
+								"startContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[2]\/p[2]\/span[1]\/span[1]",
+								"type":"RangeSelector",
+								"startOffset":11,
+								"endOffset":25
+							},
+
+							{
+								"type":"TextPositionSelector",
+								"end":30012,
+								"start":29998
+							},
+
+							{
+								"exact":"Ovarian Tumors",
+								"prefix":" \n \n \n \n Metastatic ",
+								"type":"TextQuoteSelector",
+								"suffix":" \n In established combinatio"
+							}
+						]
+				}
+			],
+
+		"links":
+			{
+				"json":"https:\/\/hypothes.is\/api\/annotations\/MDJgwg-5EeeVn-MjsWbDxg",
+				"html":"https:\/\/hypothes.is\/a\/MDJgwg-5EeeVn-MjsWbDxg",
+				"incontext":"https:\/\/hyp.is\/MDJgwg-5EeeVn-MjsWbDxg\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68"
+			},
+
+		"tags":
+			[
+				"UMLS_CUI:C0919267",
+				"DOID_2394",
+				"indication",
+				"DM"
+			],
+
+		"text":"",
+		"created":"2017-03-23T11:09:30.966531+00:00",
+		"uri":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+		"user":"acct:lrieswijk@hypothes.is",
+		"document":
+			{
+				"title":
+					[
+						"DailyMed - CISPLATIN- cisplatin injection"
+					]
+			},
+
+		"id":"MDJgwg-5EeeVn-MjsWbDxg",
+		"permissions":
+			{
+				"read":
+					[
+						"group:__world__"
+					],
+
+				"admin":
+					[
+						"acct:lrieswijk@hypothes.is"
+					],
+
+				"update":
+					[
+						"acct:lrieswijk@hypothes.is"
+					],
+
+				"delete":
+					[
+						"acct:lrieswijk@hypothes.is"
+					]
+
+			}
+
+	},
+
+	{
+		"updated":"2017-03-23T11:08:21.368069+00:00",
+		"group":"__world__",
+		"target":
+			[
+				{
+					"source":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+					"selector":
+						[
+							{
+								"conformsTo":"https:\/\/tools.ietf.org\/html\/rfc3236",
+								"type":"FragmentSelector",
+								"value":"drug-information"
+							},
+
+							{
+								"endContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[1]\/p[2]\/span[1]\/span[1]",
+								"startContainer":"\/div[1]\/div[3]\/div[1]\/div[3]\/article[1]\/div[1]\/div[1]\/ul[1]\/li[4]\/div[2]\/div[1]\/p[2]\/span[1]\/span[1]",
+								"type":"RangeSelector",
+								"startOffset":11,
+								"endOffset":28
+							},
+
+							{
+								"type":"TextPositionSelector",
+								"end":29740,
+								"start":29723
+							},
+
+							{
+								"exact":"Testicular Tumors",
+								"prefix":" \n \n \n \n Metastatic ",
+								"type":"TextQuoteSelector",
+								"suffix":" \n In established combinatio"
+							}
+						]
+				}
+			],
+
+		"links":
+			{
+				"json":"https:\/\/hypothes.is\/api\/annotations\/BrPcvA-5EeeIPpvun_dCTQ",
+				"html":"https:\/\/hypothes.is\/a\/BrPcvA-5EeeIPpvun_dCTQ",
+				"incontext":"https:\/\/hyp.is\/BrPcvA-5EeeIPpvun_dCTQ\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68"
+			},
+
+		"tags":
+			[
+				"UMLS_CUI:C0039590",
+				"DOID_2998",
+				"indication",
+				"DM"
+			],
+
+		"text":"",
+		"created":"2017-03-23T11:08:21.368069+00:00",
+		"uri":"https:\/\/dailymed.nlm.nih.gov\/dailymed\/drugInfo.cfm?setid=b2b029f5-0d7e-4e7f-accc-b722aec34c68",
+		"user":"acct:lrieswijk@hypothes.is",
+		"document":
+			{
+				"title":
+					[
+						"DailyMed - CISPLATIN- cisplatin injection"
+					]
+			},
+
+		"id":"BrPcvA-5EeeIPpvun_dCTQ",
+		"permissions":
+			{
+				"read":
+					[
+						"group:__world__"
+					],
+
+				"admin":
+					[
+						"acct:lrieswijk@hypothes.is"
+					],
+
+				"update":
+					[
+						"acct:lrieswijk@hypothes.is"
+					],
+
+				"delete":
+					[
+						"acct:lrieswijk@hypothes.is"
+					]
+			}
+	}
+]

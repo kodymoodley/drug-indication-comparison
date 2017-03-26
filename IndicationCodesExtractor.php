@@ -1,20 +1,43 @@
 ﻿<!DOCTYPE html>
-<?php
-    include("conn_dev.php");
 
+<?php
+    // Hypothes.is API TOKEN: 6879-A0VNmaeMeE7HZuaehDrRcGWooSRY68dXNbawDjVwJxY
+    include("conn_dev.php");
+    require_once('Hypothesis.inc.php');
+
+    // Hypothes.is API TOKEN
+    $token = '6879-A0VNmaeMeE7HZuaehDrRcGWooSRY68dXNbawDjVwJxY';
+    // Hypothes.is PHP Wrapper instance
+    $hypothesis = new HypothesisAPI();
+    $dailyMed = new DailyMedAPI();
+
+    // drugname typed in input textbox
     $drugname=@$_POST['drugname'];
     	
     $candisplaystuff = 0;
+    // If the drugname is specified (textbox is not empty)
     if(isset($_POST['drugname']) && $drugname <> ""){
+        // Can display results because textbox is not empty
         $candisplaystuff = 2;
+
+        // -------- DRUGCENTRAL STUFF ---------- //
+        // Query string to get drug central id for the drug name
         $getStructIDQueryStr = "SELECT struct_id FROM active_ingredient WHERE substance_name like '%".$drugname."%' LIMIT 1";
+        // Actual query directive to get drug central id for the drug name
         $getStructIDQueryResult = pg_query($conn, $getStructIDQueryStr) or die("Could not execute query");
+        // Get the single cell in the result of the query
         $structIDCell = pg_fetch_object($getStructIDQueryResult);
+        // Get the single value inside the cell
         $struct_id = $structIDCell->struct_id;
+        // Query string to get ATC code for the drug name
         $getATCQueryStr = "SELECT atc_code FROM struct2atc WHERE struct_id = $struct_id";
+        // Actual query directive to get ATC code for the drug name
         $getATCQueryResult = pg_query($conn, $getATCQueryStr) or die("Could not execute query");
+        // Get the single cell in the result of the query
         $atcCell = pg_fetch_object($getATCQueryResult);
+        // Get the single value inside the cell
         $atc = $atcCell->atc_code;
+        // Query string to get all the drug central indications for this drug
         $getIndicationCodesQueryStr = "SELECT omop_relationship.id,
         omop_relationship.struct_id,
         omop_relationship.concept_id,
@@ -33,7 +56,113 @@
               GROUP BY doid_xref.xref) d ON ((omop_relationship.snomed_conceptid = (d.xref)::bigint))) 
                  
         WHERE omop_relationship.struct_id = $struct_id and omop_relationship.relationship_name = 'indication'";
+        // Actual query directive to get all the drug central indications for this drug
         $getIndicationCodesQueryResult = pg_query($conn, $getIndicationCodesQueryStr) or die("Could not execute query");
+
+        // -------- DAILYMED STUFF ---------- //
+
+        // Get the SET ID (DailyMed ID) for the drug
+        // DailyMed API e.g. https://dailymed.nlm.nih.gov/dailymed/services/v2/spls.json?drug_name=cisplatin
+        $splDailyMed = $dailyMed->getSETID($drugname);
+
+        // We should have at least one match for the drugname from DailyMed API
+        if (count($splDailyMed->data) > 0){
+            // There may be more than one drug with same name (from other manufacturers etc.)
+            // We are only interested in the one which is annotated by Linda! For now, we just
+            // take the first one in the array but we can be more clever about this later.
+
+            // Get list of drugs matching the text given
+            $d = $splDailyMed->data;
+            // Only interested in the first one (see above paragraph)
+            $firstDrug = $d[0]; 
+            // Get the SET ID (DailyMed ID)
+            $set_id = $firstDrug->setid;
+
+            
+
+            //echo $set_id;
+
+            // Search for the annotations on hypothesis by lrieswijk containing the text "indication"
+            $dailyMedBaseUrl = "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=";
+            // Add the SET ID so we can isolate the actual web page on DailyMed for the given drug
+            $dailyMedDrugUrl = $dailyMedBaseUrl.$set_id;
+            // Actually get all the hypothesis annotations
+            $result = $hypothesis->search(array('uri' => $dailyMedDrugUrl, 'user' => 'lrieswijk', 'tag' => 'indication'), $token);
+
+            $dailyMedIndications = array(count($result));
+
+            //print_r($result);
+
+            // Print each set of tags on a new line
+            $str = "";
+            $idx = 0;
+            foreach ($result as $value) {
+                // Current row (array) of indications table
+                $currentRow = array(6);
+                // Initialise array
+
+                // Add the first column value (SET ID)
+                $currentRow[0] = $set_id;
+                
+                // Drill down to the actual text that we annotating
+                $t = $value->target;
+                $s = $t[0]->selector;
+                //$str.= $s[3]->exact.": ";
+                // Now add the second column value (indication name or text)
+                $currentRow[1] = $s[3]->exact;
+                // Get the annotations as an array
+                $annotations = $value->tags;
+                // Iterate through the annotations to find UMLs and DOID codes
+                $arr = array();
+                array_push($arr, 2);
+                array_push($arr, 3);
+                for ($x = 0; $x < count($annotations); $x++){
+                    $firstFourChars = substr($annotations[$x], 0, 4);
+                    if ($firstFourChars == "UMLS"){
+                        // Third column of row (UMLS Code)
+                        $currentRow[2] = $annotations[$x];
+                        if(($key = array_search(2, $arr)) !== false) {
+                            unset($arr[$key]);
+                        }
+                    }
+                    if ($firstFourChars == "DOID"){
+                        // Fourth column of row (DOID Code)
+                        $currentRow[3] = $annotations[$x];
+                        if(($key = array_search(3, $arr)) !== false) {
+                            unset($arr[$key]);
+                        }
+                    }
+                }
+
+                if (count($arr) == 2){
+                    $currentRow[2] = "-";
+                    $currentRow[3] = "-";
+                }
+                else if (count($arr) == 1){
+                    $i = (int)implode(",", $arr);
+                    if ($i == 2)
+                        $currentRow[2] = "-";
+                    else
+                        $currentRow[3] = "-";
+                }
+
+                $currentRow[4] = "";
+                $currentRow[5] = "";
+                
+                //echo $s[3]->exact;
+                //print_r($value->updated);
+                //echo "<br>";
+                //$str.= implode(",", $value->tags);
+                //$str.="<br>";
+                $dailyMedIndications[$idx] = $currentRow;
+                $idx++;
+                //$str.= $value->target;
+                //$str.="<br>";
+            }
+
+            //echo $str;
+        }
+
     }
 ?>
 
@@ -180,7 +309,7 @@
         
             <div id="formcontainer">
         
-                <form action="capture-reports.php" method="post">
+                <form action="IndicationCodesExtractor.php" method="post">
             
                     <div align="center">
                         <div style="color: #747f8c; font-size: 20px;"> Drug name: </div> <input type="text" id="drugname" name="drugname">
@@ -190,6 +319,7 @@
                         <input class="back button_base b01_simple_rollover" type="submit" value="View Report">
                     </div>
                     <br><br>
+
                 </form>
 
             </div>
@@ -197,7 +327,7 @@
             <?php if ($candisplaystuff == 2) { ?>
             <h1><?php echo $drugname." (".$atc.")"; ?></h1>
             <div class="container">
-              <table class="table table-hover">
+              <table class="table table-hover" style="table-layout:fixed">
                 <thead>
                   <tr bgcolor="#51ede4">
                     <th>DrugCentral ID</th>
@@ -214,9 +344,35 @@
                         <td><?php echo $grow['struct_id']; ?></td>
             			<td><?php echo $grow['concept_name']; ?></td>
             			<td><?php echo $grow['umls_cui']; ?></td>
-                        <td><?php echo $grow['doid']; ?></td>
+                        <td><?php echo substr($grow['doid'], 5); ?></td>
                         <td><?php echo $grow['snomed_conceptid']; ?></td>
                         <td><?php echo $grow['snomed_full_name']; ?></td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+               
+              </table>
+              <br><br>
+              <table class="table table-hover" style="table-layout:fixed">
+                <thead>
+                  <tr bgcolor="#51ede4">
+                    <th>DailyMed ID</th>
+                    <th>Indication Name</th>
+                    <th>UMLS Code</th>
+                    <th>DOID Code</th>
+                    <th>SNOMED Code</th>
+                    <th>SNOMED Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php for($x = 0; $x < count($result); $x++) { ?>
+                  <tr>
+                        <td><?php echo $dailyMedIndications[$x][0]; ?></td>
+                        <td><?php echo $dailyMedIndications[$x][1]; ?></td>
+                        <td><?php echo substr($dailyMedIndications[$x][2], 9); ?></td>
+                        <td><?php echo substr($dailyMedIndications[$x][3], 5); ?></td>
+                        <td><?php echo $dailyMedIndications[$x][4]; ?></td>
+                        <td><?php echo $dailyMedIndications[$x][5]; ?></td>
                   </tr>
                   <?php } ?>
                 </tbody>
