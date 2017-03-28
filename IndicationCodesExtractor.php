@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 
 <?php
-    // Hypothes.is API TOKEN: 6879-A0VNmaeMeE7HZuaehDrRcGWooSRY68dXNbawDjVwJxY
+    // Hypothes.is API TOKEN: (test) 6879-A0VNmaeMeE7HZuaehDrRcGWooSRY68dXNbawDjVwJxY
     include("conn_dev.php");
     require_once('Hypothesis.inc.php');
 
