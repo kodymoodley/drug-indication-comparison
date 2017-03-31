@@ -1,5 +1,7 @@
 select struct_id from struct2atc where atc_code = 'L01XA01'
 
+select struct_id from struct2atc where atc_code like 'L01%'
+
 select code from atc where chemical_substance = 'metformin'
 
 select * from active_ingredient where struct_id = 4392

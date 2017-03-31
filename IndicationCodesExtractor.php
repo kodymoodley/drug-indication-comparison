@@ -314,7 +314,7 @@
                     <div align="center">
                         <div style="color: #747f8c; font-size: 20px;"> Drug name: </div> <input type="text" id="drugname" name="drugname">
                     </div>
-                    <br>
+                    <br><br>
                     <div align="center">
                         <input class="back button_base b01_simple_rollover" type="submit" value="View Report">
                     </div>
