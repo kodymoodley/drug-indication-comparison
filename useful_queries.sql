@@ -1,4 +1,12 @@
-select struct_id from struct2atc where atc_code = 'L01XA01'
+select struct_id from struct2atc where atc_code like 'L01%'
+ 
+/** This is the query to get the SET ID(s) of a particular drug, given its name, from DrugCentral itself!!!
+* This might not be the best way to get it because we are interested in pulling annotations from DailyMed,
+* and therefore if we have SET ID on DailyMed which does NOT appear in DrugCentral then we MAY miss annotations
+in DailyMed.
+*/
+select label_id from prd2label where prd2label.ndc_product_code in (select product.ndc_product_code 
+from product where product_name like '%cisplatin%' or product_name like '%Cisplatin%')
 
 select struct_id from struct2atc where atc_code like 'L01%'
 

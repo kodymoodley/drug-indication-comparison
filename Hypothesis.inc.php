@@ -2,6 +2,8 @@
 
 include('./httpful.phar');
 
+set_time_limit(0);
+
 class HypothesisAPI {
 	protected $baseUrl = 'https://hypothes.is/api/';
 
@@ -75,7 +77,7 @@ class DailyMedAPI {
 	 * @param $name name of the drug
 	 * @return Object See https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm
 	 */
-	public function getSETID($name) {
+	public function getSPLInfo($name) {
 		//$response = \Httpful\Request::get($this->baseUrl . 'https://dailymed.nlm.nih.gov/dailymed/services/v2/spls.json?drug_name=' . urlencode($name))
 		$response = \Httpful\Request::get($this->baseUrl . 'spls.json?drug_name=' . $name)
 			->send();
