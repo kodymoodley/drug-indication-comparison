@@ -1,0 +1,2 @@
+# drug-indication-comparison
+Comparing the drug indications metadata of DrugCentral to those of DailyMed (which are being manually augmented with metadata specified through the Hypothes.is web annotator)
