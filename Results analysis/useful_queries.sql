@@ -1,4 +1,4 @@
-select struct_id from struct2atc where atc_code like 'L01%'
+select struct_id, atc_code from struct2atc where atc_code like 'C%' order by atc_code
  
 /** This is the query to get the SET ID(s) of a particular drug, given its name, from DrugCentral itself!!!
 * This might not be the best way to get it because we are interested in pulling annotations from DailyMed,
@@ -39,5 +39,5 @@ SELECT omop_relationship.id,
           WHERE ((doid_xref.source)::text ~~ 'SNOMED%'::text)
           GROUP BY doid_xref.xref) d ON ((omop_relationship.snomed_conceptid = (d.xref)::bigint))) 
 			 
-	WHERE omop_relationship.struct_id = 1725 and omop_relationship.relationship_name = 'indication';
+	WHERE omop_relationship.struct_id = 1610 and omop_relationship.relationship_name = 'indication';
 
