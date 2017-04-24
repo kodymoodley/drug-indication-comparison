@@ -360,8 +360,7 @@
         $data = array();
         // First get all ATC codes and Struct_IDs for given drug class
         // Query string formulation
-        //$getStructIDsAndATCCodesQueryStr = "SELECT struct_id, atc_code FROM struct2atc WHERE atc_code LIKE '".$drugname."%' AND atc_code NOT IN (SELECT atc FROM dailymed_comparison WHERE 
-        //    atc LIKE '".$drugname."%');";
+        $getStructIDsAndATCCodesQueryStr = "SELECT struct_id, atc_code FROM struct2atc WHERE atc_code LIKE '".$drugname."%' AND atc_code NOT IN (SELECT atc FROM dailymed_comparison WHERE atc LIKE '".$drugname."%');";
 
         //$getStructIDsAndATCCodesQueryStr = "select distinct a.struct_id, b.atc from struct2atc a, cardiovascular_drugs b where a.atc_code like '".$drugname."%' and a.atc_code = b.atc and (b.atc NOT IN (SELECT distinct c.atc FROM dailymed_comparison c WHERE c.atc LIKE 'C%'));";
         
@@ -741,9 +740,9 @@
                             $insertRowResult = pg_query($conn, $insertRowString) or die("Could not execute query");
 
                             // if the insertion was successful 
-                            if ($insertRowResult){
-                                echo "successful!<br>";
-                            }
+                            //if ($insertRowResult){
+                                //echo "successful!<br>";
+                            //}
                             
                             // Only increment the row number, and add the row data to the table, if the current drug actually has indications
                             if ($numIndicationsDM > 0){
