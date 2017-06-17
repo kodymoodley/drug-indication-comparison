@@ -1,0 +1,31 @@
+Drugs with role tags C01 (CUIs and DOIDs should be excluded):
+-------------------------------------------------------------
+
+1. MEXILETINE - https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ab73778b-6794-441c-b127-610a6d0733ea
+2. ALPROSTADIL - https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bb155759-3889-4cb3-9695-42a588f4f689
+
+New issues and observations:
+----------------------------
+
+1. We need to remove annotations that have "indication" AND "rejected" as tags because this means this indication is NOT suited to the drug.
+
+2. Should we remove ones tagged with SYM as well? This means the drug treats symptoms and not the disease itself.
+
+3. Should we be able to filter by "confirmed" as well?
+
+Slant:
+------
+
+This is how many inaccurate indications there are for antineoplastic and cardiovascular drugs in DrugCentral - a gold standard drug compendium on the Web.
+
+Coding plans:
+-------------
+
+Add the "rejected" codes to the list of codes to remove (also examine them first to make sure they mean what I think they mean). Actually write the code to remove the "role" and "rejected" codes from the actual codes we want and recrunch the numbers and save to dailymed_comparison table. We also want to take these codes (the ones that are known to be inaccurate from DailyMed SPL text) and check if they appear in the list of indications for this drug on DrugCentral. If they do we need to count the number of these inaccuracies per drug. This number will be the answer and major result of this work: To show the proportion of indication codes on DrugCentral that are inaccurate. 
+
+Publishing plans:
+-----------------
+
+Submit posters to ISWC (27 July) and ISMB (15 May)
+
+Research track is too much off-topic and In-use track requires a system or application to be presented that has a significant user-base outside of the developers.

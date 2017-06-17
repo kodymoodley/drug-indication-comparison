@@ -1,5 +1,4 @@
-select struct_id from omop_relationship_doid_view where ((umls_cui is null) or (doid is null)) 
-and (struct_id in (select struct_id from struct2atc where atc_code like 'L01%'))
+select * from ids_curation_comparison where dc_id = 4392
 
 select struct_id from omop_relationship_doid_view where ((umls_cui is null) and (doid is null)) 
 and (struct_id in (select struct_id from struct2atc where atc_code like 'L01%'))

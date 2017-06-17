@@ -1,0 +1,6 @@
+Caveats:
+
+- Data quality is not great, some annotations are just incorrect. E.g. some indications are tagged even though the text mentions the drug should NOT be used for that indication.
+- Some drug annotatations have not been completed so the numbers may be conservative.
+- Have not zoomed into context annotation tags to identify individual ontology terms (just counted overall hypothes.is annotations).
+- Sanity checks and debugging need to be done. E.g. if total indications on DM = 1040 and total unique ones = 286 then the ones on DC should = 1040 - 286 = 754. But my spreadsheet assigns 716 codes to DC.

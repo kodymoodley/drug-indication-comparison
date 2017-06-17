@@ -13,7 +13,7 @@ class HypothesisAPI {
 	 * @param $token Optional authorization token
 	 * @return array Set of matching annotations
 	 */
-	public function search($params, $token = null) {
+	public function search($params, $token= null) {
 		$response = \Httpful\Request::get($this->baseUrl . 'search?' . http_build_query($params))
 			->addHeader('Authorization', $token?"Bearer $token":null)
 			->send();
@@ -73,7 +73,7 @@ class DailyMedAPI {
 	protected $baseUrl = 'https://dailymed.nlm.nih.gov/dailymed/services/v2/';
 
 	/**
-	 * Get the SET ID (DailyMed ID) of a drug.
+	 * Get the SPL (structured product label) for the drug from DailyMed, in JSON format
 	 * @param $name name of the drug
 	 * @return Object See https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm
 	 */

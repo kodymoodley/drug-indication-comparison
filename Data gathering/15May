@@ -1,0 +1,10 @@
+Project Ideas:
+--------------
+
+1. Use DLQuery tab to aid comprehension of biological papers and texts (text mining)
+
+Drug indications:
+-----------------
+
+1. Composite indications: sometimes a very specific indication is mentioned in the text but it does not have a UMLS term when this phrase is pasted in UMLS term browser. Sometimes, replacing words in this phrase with synonyms can eventually yield an applicable UMLS term. But sometimes, that specific condition may just not have a UMLS term. A solution for this can be to "chain" together UMLS terms for individual composite words in the given indication phrase, and having this chain of UMLS terms serve as a descriptor of the indication. E.g. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b172773b-3905-4a1c-ad95-bab4b6126563
+

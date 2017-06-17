@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/kody.moodley/ontologies/2017/4/untitled-ontology-4"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     ontologyIRI="http://www.semanticweb.org/kody.moodley/ontologies/2017/4/untitled-ontology-4">
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="" IRI="http://www.semanticweb.org/kody.moodley/ontologies/2017/4/untitled-ontology-4#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Declaration>
+        <Class IRI="#AdjunctTherapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdjunctiveTherapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdjuvantTherapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CoPrescribedMedication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CoTherapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Drug"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FirstLineTreatment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Indication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PrimaryMedication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SecondLineTreatment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Therapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TreatmentType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#contraindicatedFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#effectiveByEvidenceFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#indicatedFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#patientContextFor"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#AdjunctTherapy"/>
+        <Class IRI="#CoTherapy"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AdjunctiveTherapy"/>
+        <Class IRI="#CoTherapy"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AdjuvantTherapy"/>
+        <Class IRI="#CoTherapy"/>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AdjunctTherapy"/>
+        <Class IRI="#Therapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdjunctiveTherapy"/>
+        <Class IRI="#Therapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdjuvantTherapy"/>
+        <Class IRI="#Therapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoPrescribedMedication"/>
+        <Class IRI="#Medication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoPrescribedMedication"/>
+        <Class IRI="#Therapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoTherapy"/>
+        <Class IRI="#Therapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Disease"/>
+        <Class IRI="#Indication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drug"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#effectiveByEvidenceFor"/>
+            <Class IRI="#Indication"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drug"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#indicatedFor"/>
+            <Class IRI="#Indication"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drug"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#effectiveByEvidenceFor"/>
+            <Class IRI="#Indication"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drug"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#indicatedFor"/>
+            <Class IRI="#Indication"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FirstLineTreatment"/>
+        <Class IRI="#TreatmentType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrimaryMedication"/>
+        <Class IRI="#Medication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrimaryMedication"/>
+        <Class IRI="#Therapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SecondLineTreatment"/>
+        <Class IRI="#TreatmentType"/>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#contraindicatedFor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Drug"/>
+            <Class IRI="#Medication"/>
+            <Class IRI="#Therapy"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#effectiveByEvidenceFor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Drug"/>
+            <Class IRI="#Medication"/>
+            <Class IRI="#Therapy"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#indicatedFor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Drug"/>
+            <Class IRI="#Medication"/>
+            <Class IRI="#Therapy"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contraindicatedFor"/>
+        <Class IRI="#Indication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#effectiveByEvidenceFor"/>
+        <Class IRI="#Indication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#indicatedFor"/>
+        <Class IRI="#Indication"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

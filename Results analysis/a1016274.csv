@@ -1,0 +1,103 @@
+_unit_id,_golden,_unit_state,_trusted_judgments,_last_judgment_at,provide_list_of_diseases_or_conditions,atc,dailymed_url,drug_name,drugbank_id,expected_indications,number,provide_list_of_diseases_or_conditions_gold,text,worker_indications
+1243634412,false,finalized,3,5/19/2017 08:54:41,"non-hyperkeratotic actinic keratoses
+non-hyperkeratotic actinic keratoses
+non-hyperkeratotic actinic keratoses of the face|non-hyperkeratotic actinic keratoses of scalp",L01XD03,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d02af310-d097-4886-86e5-adcf6bca0533,METHYL AMINOLEVULINATE,DB00992,"Non-hyperkeratotic actinic keratoses of the face,
+Non-hyperkeratotic actinic keratoses of the scalp
+",1,,Metvixia Cream in combination with 570 to 670 nm wavelength red light illumination using the CureLight BroadBand Model CureLight 01 lamp is indicated for treatment of non-hyperkeratotic actinic keratoses of the face and scalp in immunocompetent patients when used in conjunction with lesion preparation (debridement using a sharp dermal curette) in the physician’s office when other therapies are unacceptable or considered medically less appropriate.,
+1243634413,false,finalized,3,5/19/2017 09:12:11,"axillary lymph node involvement|breast cancer|acute lymphoblastic leukemia|acute myeloblastic leukemia|Hodgkin lymphoma|non-Hodgkin lymphoma|metastatic breast cancer|metastatic Wilms’ tumor|metastatic neuroblastoma|metastatic soft tissue  sarcoma|metastatic bone sarcoma|metastatic ovarian  carcinoma|metastatic transitional cell bladder carcinoma|metastatic thyroid carcinoma|metastatic gastric carcinoma
+Breast Cancer
+Adjuvant Breast Cancer|adjuvant chemotherapy|primary breast cancer|acute lymphoblastic leukemia|acute myeloblastic leukemia|Hodgkin lymphoma|non-Hodgkin lymphoma (NHL)|metastatic breast cancer|metastatic Wilms’ tumor|metastatic neuroblastoma|metastatic soft tissue sarcoma|metastatic bone sarcoma|metastatic ovarian carcinoma|metastatic transitional cell bladder carcinoma|metastatic thyroid carcinoma|metastatic gastric carcinoma|metastatic bronchogenic carcinoma",L01DB01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d928625e-c1ef-4f25-8d25-764c8c6aab67,DOXORUBICIN,DB00997,"Axillary lymph node involvement, Axillary lymph node involvement following resection of primary breast cancer, Acute lymphoblastic leukemia, Acute myeloblastic leukemia, Hodgkin’s lymphoma, Non-Hodgkin’s lymphoma, Metastatic breast cancer, Metastatic Wilms’ tumor, Metastatic neuroblastoma, Metastatic soft tissue sarcoma, Metastatic bone sarcoma, Metastatic ovarian carcinoma, Metastatic transitional cell bladder carcinoma, Metastatic thyroid carcinoma, Metastatic gastric carcinoma, Metastatic bronchogenic carcinoma",2,,"1.1 Adjuvant Breast Cancer
+Doxorubicin HCl for injection is indicated as a component of multi-agent adjuvant chemotherapy for treatment of women with axillary lymph node involvement following resection of primary breast cancer.
+1.2 Other Cancers
+Doxorubicin HCl for injection is indicated for the treatment of:
+acute lymphoblastic leukemia
+acute myeloblastic leukemia
+Hodgkin lymphoma
+non-Hodgkin lymphoma (NHL)
+metastatic breast cancer
+metastatic Wilms’ tumor
+metastatic neuroblastoma
+metastatic soft tissue sarcoma
+metastatic bone sarcoma
+metastatic ovarian carcinoma
+metastatic transitional cell bladder carcinoma
+metastatic thyroid carcinoma
+metastatic gastric carcinoma
+metastatic bronchogenic carcinoma
+",
+1243634414,false,finalized,3,5/19/2017 08:54:41,"chronic myelogenous leukemia
+chronic myelogenous leukemia
+chronic myelogenous leukemia",L01AB01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=03dc50f9-c7bd-4c0c-8bbb-c1216ec90c95,BUSULFAN,DB01008,Chronic myelogenous leukemia,3,,BUSULFEX® (busulfan) Injection is indicated for use in combination with cyclophosphamide as a conditioning regimen prior to allogeneic hematopoietic progenitor cell transplantation for chronic myelogenous leukemia.,
+1243634415,false,finalized,3,5/19/2017 09:12:11,"IV-B  carcinoma of the cervix|recurrent carcinoma of the cervix|persistent carcinoma of the cervix
+lung cancer
+cell lung cancer|chemotherapy|stage IV-B recurrent carcinoma|stage IV-B persistent carcinoma",L01XX17,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=715620fb-614f-40b6-8d3d-8494843d8518,TOPOTECAN,DB01030,"Small cell lung cancer, Small cell lung cancer sensitive disease, Stage IV-B carcinoma of the cervix, Recurrent carcinoma of the cervix, Persistent carcinoma of the cervix
+",4,,"Topotecan Hydrochloride for Injection is indicated for the treatment of:
+small cell lung cancer sensitive disease after failure of first-line chemotherapy. In clinical studies submitted to support approval, sensitive disease was defined as disease responding to chemotherapy but subsequently progressing at least 60 days (in the Phase 3 study) or at least 90 days (in the Phase 2 studies) after chemotherapy. [see Clinical Studies (14)].
+Topotecan Hydrochloride for Injection in combination with cisplatin is indicated for the treatment of:
+stage IV-B, recurrent, or persistent carcinoma of the cervix which is not amendable to curative treatment with surgery and/or radiation therapy.
+",
+1243634416,false,finalized,3,5/19/2017 08:54:41,"multiple myeloma|epithelial carcinoma
+myeloma|epithelial carcinoma of the ovary
+multiple myeloma|non-resectable epithelial carcinoma of the ovary",L01AA03,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5bc0a79d-eb07-9685-8e98-4f1979b84a48,MELPHALAN,DB01042,"Multiple myeloma, Non-resectable epithelial carcinoma of the ovary
+",5,,Melphalan Tablets USP are indicated for the palliative treatment of multiple myeloma and for the palliation of non-resectable epithelial carcinoma of the ovary.,
+1243634417,false,finalized,3,5/19/2017 09:12:11,"B-cell chronic lymphocytic leukemia
+patients with B-cell chronic lymphocytic leukemia
+B-cell chronic lymphocytic leukemia (CLL)",L01BB05,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f1ffd18c-9f6b-4479-94b9-6890bc730ecc,FLUDARABINE,DB01073,B-cell chronic lymphocytic leukemia,6,,"Fludarabine Phosphate for Injection, USP is indicated for the treatment of patients with B-cell chronic lymphocytic leukemia (CLL) who have not responded to or whose disease has progressed during treatment with at least one standard alkylating-agent containing regimen.  The safety and effectiveness of Fludarabine Phosphate for Injection, USP in previously untreated or non-refractory patients with CLL have not been established.",
+1243634418,false,finalized,3,5/19/2017 08:54:41,"Colorectal Cancer|Breast Cancer
+Colorectal Cancer|Dukes’ C colon cancer|metastatic breast cancer
+Colorectal Cancer|Dukes’ C colon cancer|metastatic colorectal carcinoma|Breast Cancer",L01BC06,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=30830d24-1421-4c25-9b6b-c15705aa4357,CAPECITABINE,DB01101,"Colorectal Cancer, Dukes’ C colon cancer, Metastatic colorectal carcinoma, Breast Cancer, Metastatic breast cancer
+",7,,"1.1 Colorectal Cancer
+Capecitabine tablets are indicated as a single agent for adjuvant treatment in patients with Dukes’ C colon cancer who have undergone complete resection of the primary tumor when treatment with fluoropyrimidine therapy alone is preferred. Capecitabine tablets were non-inferior to 5-fluorouracil and leucovorin (5-FU/LV) for disease-free survival (DFS). Physicians should consider results of combination chemotherapy trials, which have shown improvement in DFS and OS, when prescribing single-agent capecitabine tablets in the adjuvant treatment of Dukes’ C colon cancer.
+Capecitabine tablets are indicated as first-line treatment of patients with metastatic colorectal carcinoma when treatment with fluoropyrimidine therapy alone is preferred. Combination chemotherapy has shown a survival benefit compared to 5-FU/LV alone. A survival benefit over 5-FU/LV has not been demonstrated with capecitabine tablets monotherapy. Use of capecitabine tablets instead of 5-FU/LV in combinations has not been adequately studied to assure safety or preservation of the survival advantage.
+1.2 Breast Cancer
+Capecitabine tablets in combination with docetaxel are indicated for the treatment of patients with metastatic breast cancer after failure of prior anthracycline-containing chemotherapy.
+Capecitabine tablets monotherapy is also indicated for the treatment of patients with metastatic breast cancer resistant to both paclitaxel and an anthracycline-containing chemotherapy regimen or resistant to paclitaxel and for whom further anthracycline therapy is not indicated (e.g., patients who have received cumulative doses of 400 mg/m2 of doxorubicin or doxorubicin equivalents). Resistance is defined as progressive disease while on treatment, with or without an initial response, or relapse within 6 months of completing treatment with an anthracycline-containing adjuvant regimen.
+",
+1243634419,false,finalized,3,5/19/2017 08:54:41,"Hodgkin's disease
+Stage III Hodgkin's disease|Stage IV Hodgkin's disease
+Hodgkin's disease III|Hodgkin's disease IV",L01XB01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=de1c8271-64d8-4ea5-85e8-871faa4d7632,procarbazine,DB01168,"Stage III Hodgkin’s disease, Stage IV Hodgkin’s disease
+",8,,"Matulane is indicated for use in combination with other anticancer drugs for the treatment of Stage III and IV Hodgkin's disease. Matulane is used as part of the MOPP (nitrogen mustard, vincristine, procarbazine, prednisone) regimen.",
+1243634420,false,finalized,3,5/19/2017 08:54:41,"acute myeloid leukemia
+acute myeloid leukemia (AML)
+acute myeloid leukemia",L01DB06,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31c9691c-aa14-426d-b67f-f8d25e7200ce,IDARUBICIN,DB01177,"Acute myeloid leukemia, Acute myeloblastic leukemia with minimal maturation (M1),
+Acute myeloblastic leukemia with maturation (M2), Acute promyelocytic leukemia (M3), Acute myelomonocytic leukemia (M4), Acute myelomonocytic leukemia with eosinophilia (M4 eos), Acute monocytic leukemia (M5), Acute erythroid leukemia (M6), Acute megakaryoblastic leukemia (M7)
+",9,,Idarubicin hydrochloride injection in combination with other approved antileukemic drugs is indicated for the treatment of acute myeloid leukemia (AML) in adults. This includes French-American-British (FAB) classifications M1 through M7.,
+1243634421,false,finalized,3,5/19/2017 08:54:41,"germ cell testicular cancer
+germ cell testicular cancer|hemorrhagic cystitis
+germ cell testicular cancer|hemorrhagic cystitis",L01AA06,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=91e433a9-6800-43a6-ac13-a49a04a5aecd,IFOSFAMIDE,DB01181,"Germ cell testicular cancer, Hemorrhagic cystitis
+",10,,Ifosfamide for Injection is indicated for use in combination with certain other approved antineoplastic agents for third-line chemotherapy of germ cell testicular cancer. It should be used in combination with mesna for prophylaxis of hemorrhagic cystitis.,
+1243634422,false,finalized,3,5/19/2017 09:12:11,"moderately severe essential hypertension|severe essential hypertension|malignant hypertension
+essential hypertension|malignant hypertension
+essential hypertension|malignant hypertension",C02BB01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b87994ee-26a5-4d00-99e7-796bc17961f1,MECAMYLAMINE,DB00657,"Moderately severe essential hypertension, Severe essential hypertension, Malignant hypertension, Uncomplicated cases of malignant hypertension",11,,For the management of moderately severe to severe essential hypertension and in uncomplicated cases of malignant hypertension,
+1243634423,false,finalized,3,5/19/2017 09:12:11,"high-grade malignant glioma|recurrent glioblastoma multiforme
+malignant glioma|recurrent glioblastoma multiforme
+high-grade malignant glioma",L01AD01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=783ec80b-95d7-44c7-8b90-fa7394f50f67,CARMUSTINE,DB00262,"High-grade malignant glioma, Glioblastoma multiforme, Recurrent glioblastoma multiforme
+",12,,GLIADEL® Wafer is indicated in newly-diagnosed high-grade malignant glioma patients as an adjunct to surgery and radiation. GLIADEL® Wafer is indicated in recurrent glioblastoma multiforme patients as an adjunct to surgery.,
+1243634424,false,finalized,3,5/19/2017 09:12:11,"Left Ventricular Dysfunction|Myocardial Infarction|essential hypertension
+Left Ventricular Dysfunction following Myocardial Infarction Carvedilol|Hypertension Carvedilol
+Left Ventricular Dysfunction|Myocardial Infarction Carvedilol|cardiovascular mortality|myocardial infarction|Hypertension Carvedilol|essential hypertension",C07AG02,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7d485d38-5d43-4a54-bc63-82734035c66a,CARVEDILOL,DB01136,"Left Ventricular Dysfunction following Myocardial Infarction, Left Ventricular Dysfunction, Hypertension, Essential hypertension",13,,"1.1 Left Ventricular Dysfunction following Myocardial Infarction
+Carvedilol is indicated to reduce cardiovascular mortality in clinically stable patients who have survived the acute phase of a myocardial infarction and have a left ventricular ejection fraction of ≤40% (with or without symptomatic heart failure) [see Clinical Studies (14.1)].
+1.2 Hypertension
+Carvedilol is indicated for the management of essential hypertension. It can be used alone or in combination with other antihypertensive agents, especially thiazide-type diuretics [see Drug Interactions (7.2)].
+",
+1243634425,false,finalized,3,5/19/2017 09:12:11,"hypertension|congestive heart failure|hypokalemia|cardiac arrhythmias|essential hypertension|hypertension|hypokalemia
+hypertension|congestive heart failure
+hypertension|congestive heart failure|hypokalemia|hypertension|hypokalemia",C03DB01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dc7aef5e-9585-45b9-b317-4af570202ef5,AMILORIDE,DB00594,"Hypertension, Congestive heart failure, Cardiac arrhythmia
+",14,,"Amiloride hydrochloride and hydrochlorothiazide tablets are indicated in those patients with hypertension or with congestive heart failure who develop hypokalemia when thiazides or other kaliuretic diuretics are used alone, or in whom maintenance of normal serum potassium levels is considered to be clinically important, e.g., digitalized patients, or patients with significant cardiac arrhythmias.
+The use of potassium-conserving agents is often unnecessary in patients receiving diuretics for uncomplicated essential hypertension when such patients have a normal diet.
+Amiloride hydrochloride and hydrochlorothiazide tablets may be used alone or as an adjunct to other antihypertensive drugs, such as methyldopa or beta blockers. Since amiloride hydrochloride and hydrochlorothiazide enhances the action of these agents, dosage adjustments may be necessary to avoid an excessive fall in blood pressure and other unwanted side effects.
+This fixed combination drug is not indicated for the initial therapy of edema or hypertension except in individuals in whom the development of hypokalemia cannot be risked.
+",
+1243634426,false,finalized,3,5/19/2017 09:12:11,"myelodysplastic syndrome|refractory anemia|refractory anemia with ringed sideroblasts|refractory anemia with excess blasts|refractory anemia with excess blasts in transformation|chronic myelomonocytic leukemia
+Myelodysplastic Syndromes
+Myelodysplastic Syndromes (MDS)|French-American-British (FAB) myelodysplastic syndrome|refractory anemia (RA)|refractory anemia with ringed sideroblasts|neutropenia|thrombocytopenia|refractory anemia with excess blasts (RAEB)|refractory anemia with excess blasts in transformation (RAEB-T)|chronic myelomonocytic leukemia (CMMoL)",L01BC07,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=722d67e6-df13-4ad1-9261-ca1daf722e9d,AZACITIDINE,DB00928,"Myelodysplastic Syndromes, Refractory anemia, Refractory anemia with ringed sideroblasts, Refractory anemia with excess blasts, Refractory anemia with excess blasts in transformation, Chronic myelomonocytic leukemia
+",15,,"1.1 Myelodysplastic Syndromes (MDS)
+Azacitidine for injection is indicated for treatment of patients with the following French-American-British (FAB) myelodysplastic syndrome subtypes: refractory anemia (RA) or refractory anemia with ringed sideroblasts (if accompanied by neutropenia or thrombocytopenia or requiring transfusions), refractory anemia with excess blasts (RAEB), refractory anemia with excess blasts in transformation (RAEB-T), and chronic myelomonocytic leukemia (CMMoL).",
+1243634427,false,finalized,3,5/19/2017 08:54:41,"neck cancer|Lymphomas|Hodgkin’s disease|non-Hodgkin’s lymphoma|Testicular Carcinoma|Embryonal cell|choriocarcinoma|teratocarcinoma
+Squamous Cell Carcinoma|Hodgkin’s disease|non-Hodgkin’s lymphoma|Testicular Carcinoma|Embryonal cell|choriocarcinoma|teratocarcinoma
+Squamous Cell Carcinoma|non-Hodgkin’s lymphoma|Testicular Carcinoma|Testicular Carcinoma|Squamous Cell Carcinoma of  Head|Squamous Cell Carcinoma of neck|Squamous Cell Carcinoma of penis|Squamous Cell Carcinoma of cervix|Squamous Cell Carcinoma of vulva|pleural effusions",L01DC01,https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b5806c40-12ce-48e3-8abd-9f8997ef4428,BLEOMYCIN,DB00290,"Squamous Cell Carcinoma, Squamous Cell Carcinoma of the head, Squamous Cell Carcinoma of the neck, Squamous Cell Carcinoma of the mouth, Squamous Cell Carcinoma of the tongue, Squamous Cell Carcinoma of the tonsil, Squamous Cell Carcinoma of the nasopharynx, Squamous Cell Carcinoma of the oropharanyx, Squamous Cell Carcinoma of the sinus, Squamous Cell Carcinoma of the palate, Squamous Cell Carcinoma of the lip, Squamous Cell Carcinoma of the buccal mucosa, Squamous Cell Carcinoma of the gingivae, Squamous Cell Carcinoma of the epiglottis, Squamous Cell Carcinoma of the skin, Squamous Cell Carcinoma of the larynx, Squamous Cell Carcinoma of the penis, Squamous Cell Carcinoma of the cervix, Squamous Cell Carcinoma of the vulva, Lymphoma, Hodgkin’s disease, Non-hodgkin’s lymphoma, Testicular Carcinoma, Embryonal cell carcinoma, Choriocarcinoma, Teratocarcinoma of the testis, Malignant Pleural Effusion",16,,"Bleomycin for Injection, USP should be considered a palliative treatment.  It has been shown to be useful in the management of the following neoplasms either as a single agent or in proven combinations with other approved chemotherapeutic agents:
+Squamous Cell Carcinoma: Head and neck (including mouth, tongue, tonsil, nasopharynx, oropharynx, sinus, palate, lip, buccal mucosa, gingivae, epiglottis, skin, larynx), penis, cervix, and vulva.  The response to Bleomycin for Injection is poorer in patients with previously irradiated head and neck cancer.
+Lymphomas: Hodgkin’s disease, non-Hodgkin’s lymphoma.
+Testicular Carcinoma: Embryonal cell, choriocarcinoma, and teratocarcinoma.
+Bleomycin for Injection, USP has also been shown to be useful in the management of:
+Malignant Pleural Effusion: Bleomycin for Injection is effective as a sclerosing agent for the treatment of malignant pleural effusion and prevention of recurrent pleural effusions.",

@@ -1,4 +1,4 @@
-﻿<!-- BEGINNING OF DOCUMENT -->
+<!-- BEGINNING OF DOCUMENT -->
 <!DOCTYPE html>
 
 <?php
@@ -119,8 +119,17 @@
         return $arr;
     }
 
+    function contains($str, $c){
+        for ($x = 0; $x < strlen($str);$x++){
+            if ($str[$x] == $c){
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Hypothes.is API TOKEN
-    $token = '6879-ef-QplA3MslmdVLEuDjP0pQrHmkAxhweWPjAZYOlH_M';
+    $token = '6879-2oY7ox3Ka1n2H9x_vimd8sVIZJZWEaDLSprWamIvWlA';
 
     // Hypothes.is and DailyMed PHP Wrapper instances 
     $hypothesis = new HypothesisAPI();
@@ -244,7 +253,7 @@
                             //$result = $hypothesis->search(array('uri' => $dailyMedDrugUrl, 'user' => 'lrieswijk'), $token);
                             //$result = $hypothesis->search(array('uri' => $dailyMedDrugUrl, 'group' => 'dailymed'), $token);
 
-                            $dailyMedIndications = array(count($result));
+                            $dailyMedIndications = array();
 
                             // If there is at least one indication for the drug
                             if (count($result) > 0){
@@ -278,17 +287,19 @@
                                     array_push($arr, 2);
                                     array_push($arr, 3);
 
+
+                                    $umlsCodes = array();
+                                    $doidCodes = array();
+
                                     // Iterate through the tags to find UMLS and DOID codes
                                     for ($x = 0; $x < count($annotations); $x++){
-
                                         // Get the first four characters of the tag (the annotation protocol dictates that DOID codes
                                         // and UMLS codes start with either "DOID" or "UMLS" respectively)
                                         $firstFourChars = substr($annotations[$x], 0, 4);
 
                                         if ($firstFourChars == "UMLS"){
-                                            // Third column of row (UMLS Code)
-                                            $currentRow[2] = $annotations[$x];
-
+                                            $pos = strpos($annotations[$x], ':');
+                                            array_push($umlsCodes, substr($annotations[$x],$pos+1));
                                             // ?
                                             if(($key = array_search(2, $arr)) !== false) {
                                                 unset($arr[$key]);
@@ -296,9 +307,16 @@
                                         }
 
                                         if ($firstFourChars == "DOID"){
-                                            // Fourth column of row (DOID Code)
-                                            $currentRow[3] = $annotations[$x];
-
+                                            $colon = false;
+                                            $colon = contains($annotations[$x], ':');
+                                            if ($colon){
+                                                $pos = strpos($annotations[$x], ':');
+                                                array_push($doidCodes, substr($annotations[$x],$pos+1));
+                                            }
+                                            else{
+                                                $pos = strpos($annotations[$x], '_');
+                                                array_push($doidCodes, substr($annotations[$x],$pos+1));
+                                            }
                                             // ?
                                             if(($key = array_search(3, $arr)) !== false) {
                                                 unset($arr[$key]);
@@ -306,25 +324,15 @@
                                         }
                                     }
 
-                                    // Way to mark cells in the table that don't have values. HORRIBLE hack!! Need to fix this section
-                                    if (count($arr) == 2){
-                                        $currentRow[2] = "-";
-                                        $currentRow[3] = "-";
-                                    }
-                                    else if (count($arr) == 1){
-                                        $i = (int)implode(",", $arr);
-                                        if ($i == 2)
-                                            $currentRow[2] = "-";
-                                        else
-                                            $currentRow[3] = "-";
-                                    }
+                                    $currentRow[2] = implode(',', $umlsCodes);
+                                    $currentRow[3] = implode(',', $doidCodes);
 
                                     // ?
                                     $currentRow[4] = "";
                                     $currentRow[5] = "";
                                     
                                     // Rows of table
-                                    $dailyMedIndications[$idx2] = $currentRow;
+                                    array_push($dailyMedIndications, $currentRow);
 
                                     // Increment row for this indication
                                     $idx2++;
@@ -360,7 +368,7 @@
         $data = array();
         // First get all ATC codes and Struct_IDs for given drug class
         // Query string formulation
-        $getStructIDsAndATCCodesQueryStr = "SELECT struct_id, atc_code FROM struct2atc WHERE atc_code LIKE '".$drugname."%' AND atc_code NOT IN (SELECT atc FROM dailymed_comparison WHERE atc LIKE '".$drugname."%');";
+        $getStructIDsAndATCCodesQueryStr = "SELECT struct_id, atc_code FROM struct2atc WHERE atc_code LIKE '".$drugname."%'";
 
         //$getStructIDsAndATCCodesQueryStr = "select distinct a.struct_id, b.atc from struct2atc a, cardiovascular_drugs b where a.atc_code like '".$drugname."%' and a.atc_code = b.atc and (b.atc NOT IN (SELECT distinct c.atc FROM dailymed_comparison c WHERE c.atc LIKE 'C%'));";
         
@@ -414,11 +422,11 @@
                 $tmpRow = array();
                 
                 // keep reference to ATC code for this drug                
-                $currentATC = $grow['atc'];
+                $currentATC = $grow['atc_code'];
 
                 // Get the name of the drug as well:
                 // (a) Query string to get drug name            
-                $getDrugNameQueryStr = "SELECT chemical_substance FROM atc WHERE code = '".$grow['atc']."' limit 1";
+                $getDrugNameQueryStr = "SELECT chemical_substance FROM atc WHERE code = '".$grow['atc_code']."' limit 1";
                 // (b) Actual query directive to get drug name
                 $getDrugNameQueryResult = pg_query($conn, $getDrugNameQueryStr) or die("Could not execute query");
 
@@ -433,7 +441,7 @@
                     
                     // Start populating the row with data we already have (1. row number, 2. atc code, 3. drugname, 4. Struct ID)
                     array_push($tmpRow, $counter);
-                    array_push($tmpRow, $grow['atc']);
+                    array_push($tmpRow, $grow['atc_code']);
                     array_push($tmpRow, $drug_name);
                     array_push($tmpRow, $grow['struct_id']);
 
@@ -476,6 +484,7 @@
 
                             // there is at least a UMLS CUI or DOID code for this indication, for this drug
                             if (($grow['umls_cui'] <> "") || ($grow['doid'] <> "")){
+                                echo $grow['umls_cui']." ".$grow['doid']."<br>";
                                 // If there is a UMLS CUI
                                 if ($grow['umls_cui'] <> ""){
                                     // add this CUI to the UMLS-DOID pair array
@@ -487,10 +496,18 @@
                                 }
                                 // If there is a DOID code
                                 if ($grow['doid'] <> ""){
-                                    // add this DOID code to the UMLS-DOID pair array                        
-                                    array_push($currentUMLSDOIDPairDC, substr($grow['doid'],5));
-                                    // add this DOID code to the DOID code array
-                                    array_push($doidIndicationsDC, substr($grow['doid'],5));    
+                                    // add this DOID code to the UMLS-DOID pair array        
+                                    if (contains($grow['doid'], ':')){
+                                        $tmp1 = str_replace("DOID:", "", $grow['doid']);
+                                        array_push($currentUMLSDOIDPairDC, $tmp1);
+                                        array_push($doidIndicationsDC, $tmp1);
+                                    }  
+                                    else{
+                                        $tmp2 = str_replace("DOID_", "", $grow['doid']);
+                                        array_push($currentUMLSDOIDPairDC, $tmp2);
+                                        array_push($doidIndicationsDC, $tmp2);
+                                    }              
+                                      
                                     // increment the number of DOID terms for this drug
                                     $numDOIDtermsDC++;
                                 }
@@ -514,6 +531,7 @@
                     // I.e., returns a JSON object which holds an array of products (product labels) on DailyMed which have 
                     // the given drug name as the main ingredient
                     // echo "name: ".$drug_name." <br>";
+                    echo "name: ".$drug_name."<br>";
                     $splDailyMed = $dailyMed->getSPLInfo($drug_name); 
                     //echo "labels: ".count($splDailyMed->data)." <br>";
                     // We should have at least one product label for the drug on DailyMed (count the size of the returned array)
@@ -592,9 +610,10 @@
                                     array_push($new_context_result, $value);
                                 }
                             }                                                
-
+                            echo "here<br>";
                             // If there is at least one annotation (either indication or context) for this drug
                             if (count($result) > 0 || count($context_result) > 0){
+                                echo "got here<br>";
                                 // set the total context annotations for this drug (from DailyMed obviously)
                                 $numContextAnnotations = count($new_context_result);
                                     
@@ -612,7 +631,7 @@
                                 array_push($tmpRow, $numIndicationsDM);
 
                                 // debugging
-                                echo $drug_name." result: ";
+                                //echo $drug_name." result: ";
                                 // For each indication for this drug
                                 foreach ($result as $value) {
                                     // debugging
@@ -635,18 +654,30 @@
                                         if ($firstFourChars == "UMLS"){
                                             // Here we take all characters after the 9th. I.e., all characters after the expression "UMLS_CUI:" 
                                             // which is 9 characters long. Add this code to the current UMLS-DOID pair array
-                                            array_push($currentUMLSDOIDPairDM, substr($annotations[$x],9));
+                                            $pos = strpos($annotations[$x], ':');
+                                            $tmp1 = substr($annotations[$x],$pos+1);
+                                            array_push($currentUMLSDOIDPairDM, $tmp1);
                                             // add this code to the set of UMLS codes for this drug in DailyMed
-                                            array_push($umlsIndicationsDM, substr($annotations[$x],9));
+                                            array_push($umlsIndicationsDM, $tmp1);
                                             // Increment the number of UMLS codes for this drug on DailyMed
                                             $numUMLStermsDM++;
                                         }
                                         if ($firstFourChars == "DOID"){
                                             // Here we take all characters after the 5th. I.e., all characters after the expression "DOID_" 
                                             // which is 5 characters long. Add this code to the current UMLS-DOID pair array
-                                            array_push($currentUMLSDOIDPairDM, substr($annotations[$x],5));
+                                            if (contains($annotations[$x], ':')){
+                                                $tmp1 = str_replace("DOID:", "", $annotations[$x]);
+                                                array_push($currentUMLSDOIDPairDM, $tmp1);
+                                                array_push($doidIndicationsDM, $tmp1);
+                                            }
+                                            else{
+                                                $tmp2 = str_replace("DOID_", "", $annotations[$x]);
+                                                array_push($currentUMLSDOIDPairDM, $tmp2);
+                                                array_push($doidIndicationsDM, $tmp2);
+                                            }
+                                            
                                             // add this code to the set of DOID codes for this drug in DailyMed
-                                            array_push($doidIndicationsDM, substr($annotations[$x],5));
+                                            
                                             // Increment the number of DOID codes for this drug on DailyMed
                                             $numDOIDtermsDM++;   
                                         }
@@ -664,7 +695,9 @@
                                 // debugging
                                 echo "<br>";                                        
                             }
-                            
+                            else{
+                                echo "!!!HERE!!!<br>";
+                            }
                             // Increment product label index (go to next product label in the SPL JSON array)
                             $idx++;
                         }
@@ -678,17 +711,32 @@
                             // 16
                             $numExactMatchesDOID = count(array_intersect($doidIndicationsDC, $doidIndicationsDM));
                             // Get the UMLS codes common to both DrugCentral and DailyMed (this will also tell us which are unique to DC and DM)
-                            $commonUMLS = array_map("unserialize", array_intersect(serialize_array_values($umlsIndicationsDC),serialize_array_values($umlsIndicationsDM)));                        
-                            $uniqueUMLSDC = arrayRecursiveDiff($umlsIndicationsDC, $commonUMLS);
-                            $uniqueUMLSDM = arrayRecursiveDiff($umlsIndicationsDM, $commonUMLS);
+                            $commonUMLS = array_map("unserialize", array_intersect(serialize_array_values($umlsIndicationsDC),serialize_array_values($umlsIndicationsDM)));
+                            $commonUMLSStr = implode(',', $commonUMLS);
+
+
+                            $uniqueUMLSDC = array_diff($umlsIndicationsDC, $commonUMLS);
+                            echo "drugcentral UMLS: ".implode(', ', $umlsIndicationsDC)."<br>";
+                            echo "common UMLS: ".implode(', ', $commonUMLS)."<br>";
+                            echo "unique drugcentral UMLS: ".implode(',',$uniqueUMLSDC)."<br>";
+                            $uniqueUMLSDCStr = implode(',', $uniqueUMLSDC);
+                            $uniqueUMLSDM = array_diff($umlsIndicationsDM, $commonUMLS);
+                            $uniqueUMLSDMStr = implode(',', $uniqueUMLSDM);
                             //20
                             $numUniqueUMLSDC = count($uniqueUMLSDC);
                             //23
                             $numUniqueUMLSDM = count($uniqueUMLSDM);
                             // Get the DOID codes common to both DrugCentral and DailyMed (this will also tell us which are unique to DC and DM)
-                            $commonDOID = array_map("unserialize", array_intersect(serialize_array_values($doidIndicationsDC),serialize_array_values($doidIndicationsDM)));                        
-                            $uniqueDOIDDC = arrayRecursiveDiff($doidIndicationsDC, $commonDOID);
-                            $uniqueDOIDDM = arrayRecursiveDiff($doidIndicationsDM, $commonDOID);
+                            $commonDOID = array_map("unserialize", array_intersect(serialize_array_values($doidIndicationsDC),serialize_array_values($doidIndicationsDM)));
+
+                            $commonDOIDStr = implode(',', $commonDOID);
+
+                            $uniqueDOIDDC = array_diff($doidIndicationsDC, $commonDOID);
+                            $uniqueDOIDDCStr = implode(',', $uniqueDOIDDC);
+
+                            $uniqueDOIDDM = array_diff($doidIndicationsDM, $commonDOID);
+                            $uniqueDOIDDMStr = implode(',', $uniqueDOIDDM);
+
                             //21
                             $numUniqueDOIDDC = count($uniqueDOIDDC);
                             //24
@@ -724,25 +772,26 @@
                             $numDOIDIndicationsDM = count($doidIndicationsDM);
 
                             // SQL command string to write comparison results for this drug into DrugCentral DB
-                            $insertRowString = "INSERT INTO dailymed_comparison 
+                            /*$insertRowString = "INSERT INTO dailymed_comparison 
                             (atc, name, dc_id, dm_id, umls_ind_codes_dc, 
                             doid_ind_codes_dc, total_ind_codes_dc, total_codes_dc, umls_ind_codes_dm, doid_ind_codes_dm,
                             total_ind_codes_dm, context_codes_dm, total_codes_dm, umls_exact_matches, doid_exact_matches,
                             umls_doid_pair_exact_matches, total_separate_exact_matches, total_pair_exact_matches, unique_umls_codes_dc, unique_doid_codes_dc,
-                            total_unique_ind_codes_dc, unique_umls_codes_dm, unique_doid_codes_dm, total_unique_ind_codes_dm, total_unique_codes_dm) 
+                            total_unique_ind_codes_dc, unique_umls_codes_dm, unique_doid_codes_dm, total_unique_ind_codes_dm, total_unique_codes_dm, umls_matches_codes, doid_matches_codes, dm_unique_umls_actualcodes, dm_unique_doid_actualcodes, dc_unique_umls_actualcodes, dc_unique_doid_actualcodes) 
 
                             VALUES ('$currentATC', '$drug_name', '$struct_id', '$set_id', '$numUMLSIndicationsDC',
                             '$numDOIDIndicationsDC', '$totalIndicationCodesDC', '$totalCodesDC', '$numUMLStermsDM', '$numDOIDtermsDM',
                             '$totalIndicationCodesDM', '$numContextAnnotations', '$totalCodesDM', '$numExactMatchesUMLS', '$numExactMatchesDOID',
                             '0', '$numExactMatchesTotal', '0', '$numUniqueUMLSDC', '$numUniqueDOIDDC',
-                            '$totalUniqueIndicationCodesDC', '$numUniqueUMLSDM', '$numUniqueDOIDDM', '$totalUniqueIndicationCodesDM', '$totalUniqueCodesDM')";
+                            '$totalUniqueIndicationCodesDC', '$numUniqueUMLSDM', '$numUniqueDOIDDM', '$totalUniqueIndicationCodesDM', '$totalUniqueCodesDM', '$commonUMLSStr',
+                                '$commonDOIDStr', '$uniqueUMLSDMStr', '$uniqueDOIDDMStr', '$uniqueUMLSDCStr', '$uniqueDOIDDCStr')";
                             // Execute SQL command to write comparison results for this drug to DrugCentral DB
                             $insertRowResult = pg_query($conn, $insertRowString) or die("Could not execute query");
 
                             // if the insertion was successful 
-                            //if ($insertRowResult){
-                                //echo "successful!<br>";
-                            //}
+                            if ($insertRowResult){
+                                echo "successful!<br>";
+                            }*/
                             
                             // Only increment the row number, and add the row data to the table, if the current drug actually has indications
                             if ($numIndicationsDM > 0){
@@ -833,8 +882,8 @@
             }
 
             @media screen and (max-width: 840px) {
-                .back {
-                    width: 100%;
+                .back 
+{                    width: 100%;
                 }
             }
 
@@ -954,7 +1003,7 @@
                         <td><?php echo $grow['struct_id']; ?></td>
             			<td><?php echo $grow['concept_name']; ?></td>
             			<td><?php echo $grow['umls_cui']; ?></td>
-                        <td><?php echo substr($grow['doid'], 5); ?></td>
+                        <td><?php echo str_replace("DOID", "", $grow['doid']); ?></td>
                         <td><?php echo $grow['snomed_conceptid']; ?></td>
                         <td><?php echo $grow['snomed_full_name']; ?></td>
                   </tr>
@@ -979,8 +1028,8 @@
                   <tr>
                         <td><?php echo $dailyMedIndications[$x][0]; ?></td>
                         <td><?php echo $dailyMedIndications[$x][1]; ?></td>
-                        <td><?php echo substr($dailyMedIndications[$x][2], 9); ?></td>
-                        <td><?php echo substr($dailyMedIndications[$x][3], 5); ?></td>
+                        <td><?php echo $dailyMedIndications[$x][2]; ?></td>
+                        <td><?php echo $dailyMedIndications[$x][3]; ?></td>
                         <td><?php echo $dailyMedIndications[$x][4]; ?></td>
                         <td><?php echo $dailyMedIndications[$x][5]; ?></td>
                   </tr>

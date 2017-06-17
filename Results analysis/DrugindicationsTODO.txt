@@ -1,0 +1,3 @@
+Only consider annotations which give indications for the drug directly (do not associate indications that require co-prescribed medications)
+
+How many of drug centrals indications are only achievable in a combination therapy - numbers for Tudor
