@@ -89,7 +89,7 @@ public class CachedSemanticSimilarityProcessor {
 		String aCmdArgs = "C:/Strawberry/perl/bin/perl.exe UMLS-Similarity-1.47.tar\\UMLS-Similarity-1.47\\utils\\query-umls-similarity-webinterface.pl" +
 				" --measure " + measure + " --url http://maraca.d.umn.edu " + c1 + " " + c2;
 
-		System.out.println(aCmdArgs);
+		//System.out.println(aCmdArgs);
 
 		Runtime oRuntime = Runtime.getRuntime();
 		Process oProcess = null;
@@ -155,8 +155,10 @@ public class CachedSemanticSimilarityProcessor {
 				i++;
 			}
 
-			name_cache.put(c1 + "_" + c2, dc_name + "_" + other_name);
-			name_cache.put(c2 + "_" + c1, other_name + "_" + dc_name);
+			if (dc_name.matches(".*[a-z].*") && other_name.matches(".*[a-z].*")){
+				name_cache.put(c1 + "_" + c2, dc_name + "_" + other_name);
+				name_cache.put(c2 + "_" + c1, other_name + "_" + dc_name);
+			}
 		}
 
 		System.out.flush();
@@ -166,5 +168,33 @@ public class CachedSemanticSimilarityProcessor {
 		//System.err.println("Exit status=" + oProcess.exitValue());
 		return Double.parseDouble(score);		
 	}
-
+	
+	public String getIndicationName(String code1, String code2, int part){
+		if (part == 1){
+			if (name_cache.containsKey(code1 + "_" + code2)){
+				String fullStr = name_cache.get(code1 + "_" + code2);
+				return fullStr.substring(0, fullStr.indexOf("_"));
+			}
+			else if (name_cache.containsKey(code2 + "_" + code1)){
+				String fullStr = name_cache.get(code2 + "_" + code1);
+				return fullStr.substring(0, fullStr.indexOf("_"));
+			}
+			else{
+				return "?";
+			}
+		}
+		else{
+			if (name_cache.containsKey(code1 + "_" + code2)){
+				String fullStr = name_cache.get(code1 + "_" + code2);
+				return fullStr.substring(fullStr.indexOf("_")+1);
+			}
+			else if (name_cache.containsKey(code2 + "_" + code1)){
+				String fullStr = name_cache.get(code2 + "_" + code1);
+				return fullStr.substring(fullStr.indexOf("_")+1);
+			}
+			else{
+				return "?";
+			}
+		}
+	}
 }
